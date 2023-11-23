@@ -3,13 +3,17 @@ import { omit } from '@v-c/utils'
 import { useLayoutState } from '../../basic-layout/context'
 import SubMenu from './sub-menu.vue'
 
-const { splitState, menuData, handleSplitSelectedKeys } = useLayoutState()
+const { splitState, menuData, handleSplitSelectedKeys } = useLayoutState ()
 
-const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['children']), childrenCount: (v.children ?? []).length })))
+const menuDataList = computed (() => menuData.value?.map (v => ({
+  ...omit (v, ['children']),
+  childrenCount: (v.children ?? []).length,
+})))
 </script>
 
 <template>
   <a-menu
+    style="justify-content: flex-end;"
     mode="horizontal"
     theme="dark"
     class="ant-pro-sider-menu-header"
@@ -25,11 +29,12 @@ const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['chi
 </template>
 
 <style lang="less">
-.ant-pro-sider-menu-header{
+.ant-pro-sider-menu-header {
   margin-left: 14px;
 }
-[data-theme='dark']{
-  .ant-pro-sider-menu-header{
+
+[data-theme='dark'] {
+  .ant-pro-sider-menu-header {
     background: transparent;
   }
 }

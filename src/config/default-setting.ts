@@ -9,7 +9,7 @@ export default {
   'colorPrimary': '#1677FF',
   'layout': 'top',
   'contentWidth': 'Fixed',
-  'fixedHeader': false,
+  'fixedHeader': true,
   'fixedSider': true,
   'splitMenus': false,
   'header': true,

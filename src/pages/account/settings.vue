@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import basicSetting from './components/basic-setting.vue'
-import securitySetting from './components/security-setting.vue'
-import accountSetting from './components/account-setting.vue'
-import messageSetting from './components/message-setting.vue'
-
 const { t } = useI18n()
 const selectedKeys = ref(['1'])
 
@@ -47,24 +42,7 @@ function seti18n(key: string) {
 </script>
 
 <template>
-  <a-card>
-    <a-row :gutter="24">
-      <a-col :span="4" style="padding-left: 0;">
-        <a-menu
-          v-model:selectedKeys="selectedKeys"
-          style="width: 250px"
-          mode="inline"
-          :items="items"
-        />
-      </a-col>
-      <a-col :span="20">
-        <basicSetting v-if="selectedKeys[0] === '1'" />
-        <securitySetting v-if="selectedKeys[0] === '2'" />
-        <accountSetting v-if="selectedKeys[0] === '3'" />
-        <messageSetting v-if="selectedKeys[0] === '4'" />
-      </a-col>
-    </a-row>
-  </a-card>
+  <div>1</div>
 </template>
 
 <style scoped lang="less">

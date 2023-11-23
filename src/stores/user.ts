@@ -22,7 +22,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const generateDynamicRoutes = async () => {
-    const dynamicLoadWay = DYNAMIC_LOAD_WAY === DynamicLoadEnum.BACKEND ? getMenuRoutes : generateRoutes
+    const dynamicLoadWay = DYNAMIC_LOAD_WAY === DynamicLoadEnum.FRONTEND ? getMenuRoutes : generateRoutes
     const { menuData: treeMenuData, routeData } = await dynamicLoadWay()
 
     menuData.value = treeMenuData
