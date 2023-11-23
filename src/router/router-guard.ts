@@ -11,8 +11,12 @@ router.beforeEach(async (to, _, next) => {
   // 获取
   const userStore = useUserStore()
   const token = useAuthorization()
+  const currentRoute = await userStore.generateDynamicRoutes()
+  router.addRoute(currentRoute)
+  console.log (token.value)
   if (!token.value) {
     //  如果token不存在就跳转到登录页面
+
     if (!allowList.includes(to.path) && !to.path.startsWith('/redirect')) {
       next({
         path: loginPath,
@@ -27,10 +31,9 @@ router.beforeEach(async (to, _, next) => {
     if (!userStore.userInfo && !allowList.includes(to.path) && !to.path.startsWith('/redirect')) {
       try {
         // 获取用户信息
-        await userStore.getUserInfo()
-        // 获取路由菜单的信息
         const currentRoute = await userStore.generateDynamicRoutes()
         router.addRoute(currentRoute)
+        console.log (to)
         next({
           ...to,
           replace: true,
@@ -49,8 +52,10 @@ router.beforeEach(async (to, _, next) => {
     else {
       // 如果当前是登录页面就跳转到首页
       if (to.path === loginPath) {
+        console.log ('如果当前是登录页面就跳转到首页')
         next({
           path: '/',
+          replace: true,
         })
         return
       }

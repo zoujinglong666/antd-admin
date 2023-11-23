@@ -7,7 +7,6 @@ import dynamicRoutes, { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/dynamic-route
 import { i18n } from '~@/locales'
 
 let cache_key = 1
-
 const getCacheKey = () => `Cache_Key_${cache_key++}`
 
 function renderTitle(route: RouteRecordRaw) {

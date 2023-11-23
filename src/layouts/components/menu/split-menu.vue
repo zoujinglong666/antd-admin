@@ -9,6 +9,7 @@ const menuDataList = computed (() => menuData.value?.map (v => ({
   ...omit (v, ['children']),
   childrenCount: (v.children ?? []).length,
 })))
+console.log (menuDataList)
 </script>
 
 <template>
