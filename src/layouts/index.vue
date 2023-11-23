@@ -2,8 +2,9 @@
 import { pick } from '@v-c/utils'
 import { defineOptions } from 'vue'
 import BasicLayout from './basic-layout/index.vue'
-
-// import SettingDrawer from './components/setting-drawer/index.vue'
+import SettingDrawer from './components/setting-drawer/index.vue'
+import MultiTab from '@/layouts/multi-tab/index.vue'
+import { animationNameList } from '~/config/default-setting.ts'
 
 defineOptions({
   name: 'ProLayout',
@@ -63,12 +64,10 @@ const layoutProps = computed(() =>
       <!--        <DocLink /> -->
       <!--      </template> -->
     </template>
-    <!--    <template #contentPrefix> -->
-    <!--      <MultiTab v-if="layoutSetting.multiTab" /> -->
-    <!--    </template> -->
-
+    <template #contentPrefix>
+      <MultiTab v-if="layoutSetting.multiTab" />
+    </template>
     <template #renderFooterLinks />
-
     <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component }">
@@ -77,24 +76,24 @@ const layoutProps = computed(() =>
       </RouterView>
     </a-watermark>
   </BasicLayout>
-<!--  <SettingDrawer -->
-<!--    v-model:open="layoutSetting.drawerVisible" -->
-<!--    :t="t" -->
-<!--    :theme="layoutSetting.theme" -->
-<!--    :color-primary="layoutSetting.colorPrimary" -->
-<!--    :color-weak="layoutSetting.colorWeak" -->
-<!--    :multi-tab="layoutSetting.multiTab" -->
-<!--    :multi-tab-fixed="layoutSetting.multiTabFixed" -->
-<!--    :animation-name-list="animationNameList" -->
-<!--    :animation-name="layoutSetting.animationName" -->
-<!--    :keep-alive="layoutSetting.keepAlive" -->
-<!--    :accordion-mode="layoutSetting.accordionMode" -->
-<!--    :left-collapsed="layoutSetting.leftCollapsed" -->
-<!--    :watermark="layoutSetting.watermark" -->
-<!--    v-bind="layoutProps" -->
-<!--    :layout-setting="layoutSetting" -->
-<!--    @setting-change="appStore.changeSettingLayout" -->
-<!--  /> -->
+  <SettingDrawer
+    v-model:open="layoutSetting.drawerVisible"
+    :t="t"
+    :theme="layoutSetting.theme"
+    :color-primary="layoutSetting.colorPrimary"
+    :color-weak="layoutSetting.colorWeak"
+    :multi-tab="layoutSetting.multiTab"
+    :multi-tab-fixed="layoutSetting.multiTabFixed"
+    :animation-name-list="animationNameList"
+    :animation-name="layoutSetting.animationName"
+    :keep-alive="layoutSetting.keepAlive"
+    :accordion-mode="layoutSetting.accordionMode"
+    :left-collapsed="layoutSetting.leftCollapsed"
+    :watermark="layoutSetting.watermark"
+    v-bind="layoutProps"
+    :layout-setting="layoutSetting"
+    @setting-change="appStore.changeSettingLayout"
+  />
 </template>
 
 <style scoped></style>

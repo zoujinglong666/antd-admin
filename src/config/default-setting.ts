@@ -5,7 +5,7 @@ export default {
   'theme': 'inverted',
   'logo': '/logo.svg',
   'collapsed': false,
-  'drawerVisible': true,
+  'drawerVisible': false,
   'colorPrimary': '#1677FF',
   'layout': 'top',
   'contentWidth': 'Fixed',
