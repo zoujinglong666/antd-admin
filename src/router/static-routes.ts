@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import dynamicRoutes from '~/router/dynamic-routes.ts'
 
 const Layout = () => import('~/layouts/index.vue')
 
@@ -37,6 +38,7 @@ export default [
           },
         ],
       },
+      ...dynamicRoutes,
 
     ],
   },

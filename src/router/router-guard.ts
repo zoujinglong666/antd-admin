@@ -11,9 +11,6 @@ router.beforeEach(async (to, _, next) => {
   // 获取
   const userStore = useUserStore()
   const token = useAuthorization()
-  const currentRoute = await userStore.generateDynamicRoutes()
-  router.addRoute(currentRoute)
-  console.log (token.value)
   if (!token.value) {
     //  如果token不存在就跳转到登录页面
 
@@ -50,9 +47,11 @@ router.beforeEach(async (to, _, next) => {
       }
     }
     else {
+      const currentRoute = await userStore.generateDynamicRoutes()
+      router.addRoute(currentRoute)
+
       // 如果当前是登录页面就跳转到首页
       if (to.path === loginPath) {
-        console.log ('如果当前是登录页面就跳转到首页')
         next({
           path: '/',
           replace: true,

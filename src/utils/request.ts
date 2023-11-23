@@ -86,11 +86,7 @@ function errorHandler(error: AxiosError): Promise<any> {
       })
     }
     else {
-      notification?.error({
-        message: '服务错误',
-        description: data?.msg || statusText,
-        duration: 3,
-      })
+      console.log (data?.msg || statusText)
     }
   }
   return Promise.reject(error)
