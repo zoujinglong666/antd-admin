@@ -1,4 +1,3 @@
-import { logoutApi } from '~@/api/common/login'
 import { getRouteMenusApi } from '~@/api/common/menu'
 import type { UserInfo } from '~@/api/common/user'
 import type { MenuData } from '~@/layouts/basic-layout/typing'
@@ -13,29 +12,29 @@ const initUserInfo = {
   avatar: 'example_avatar.jpg',
   roles: ['admin'],
 }
-export const useUserStore = defineStore ('user', () => {
-  const routerData = shallowRef ()
-  const menuData = shallowRef<MenuData> ([])
-  const userInfo = shallowRef<UserInfo | any> (initUserInfo)
-  const token = useAuthorization ()
-  const avatar = computed (() => userInfo.value?.avatar)
-  const nickname = computed (() => userInfo.value?.nickname ?? userInfo.value?.username)
-  const roles = computed (() => userInfo.value?.roles)
+export const useUserStore = defineStore('user', () => {
+  const routerData = shallowRef()
+  const menuData = shallowRef<MenuData>([])
+  const userInfo = shallowRef<UserInfo | any>(initUserInfo)
+  const token = useAuthorization()
+  const avatar = computed(() => userInfo.value?.avatar)
+  const nickname = computed(() => userInfo.value?.nickname ?? userInfo.value?.username)
+  const roles = computed(() => userInfo.value?.roles)
 
   const getMenuRoutes = async () => {
-    const { data } = await getRouteMenusApi ()
-    return generateTreeRoutes (data ?? [])
+    const { data } = await getRouteMenusApi()
+    return generateTreeRoutes(data ?? [])
   }
 
   const generateDynamicRoutes = async () => {
     const dynamicLoadWay = DYNAMIC_LOAD_WAY === DynamicLoadEnum.FRONTEND ? getMenuRoutes : generateRoutes
-    const { menuData: treeMenuData, routeData } = await dynamicLoadWay ()
+    const { menuData: treeMenuData, routeData } = await dynamicLoadWay()
 
     menuData.value = treeMenuData
 
     routerData.value = {
       ...rootRoute,
-      children: generateFlatRoutes (routeData),
+      children: generateFlatRoutes(routeData),
     }
     return routerData.value
   }
@@ -49,15 +48,10 @@ export const useUserStore = defineStore ('user', () => {
   const logout = async () => {
     // 退出登录
     // 1. 清空用户信息
-    try {
-      await logoutApi ()
-    }
-    finally {
-      token.value = null
-      userInfo.value = undefined
-      routerData.value = undefined
-      menuData.value = []
-    }
+    token.value = null
+    userInfo.value = initUserInfo
+    routerData.value = undefined
+    menuData.value = []
   }
 
   return {

@@ -7,7 +7,6 @@ interface activeDataItemType {
 }
 
 const activeData = ref<activeDataItemType[]>([])
-
 const tinyAreaData = ref<number[]>([])
 
 let tinyArea: TinyArea | undefined
@@ -94,34 +93,41 @@ onBeforeUnmount(() => {
 .activeChart {
   position: relative;
 }
+
 .activeChartGrid {
   p {
     position: absolute;
     top: 80px;
   }
+
   p:last-child {
     top: 115px;
   }
 }
+
 .activeChartLegend {
   position: relative;
   height: 20px;
   margin-top: 8px;
   font-size: 0;
   line-height: 20px;
+
   span {
     display: inline-block;
     width: 33.33%;
     font-size: 12px;
     text-align: center;
   }
+
   span:first-child {
     text-align: left;
   }
+
   span:last-child {
     text-align: right;
   }
 }
+
 .dashedLine {
   position: relative;
   top: -70px;

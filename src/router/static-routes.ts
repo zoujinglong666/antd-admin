@@ -1,14 +1,16 @@
 import type { RouteRecordRaw } from 'vue-router'
-import dynamicRoutes from '~/router/dynamic-routes.ts'
+import dynamicRoutes, { rootRoute } from '~/router/dynamic-routes.ts'
 
 const Layout = () => import('~/layouts/index.vue')
 
 export default [
+  rootRoute,
   {
     path: '/login',
     component: () => import('~/pages/common/login.vue'),
     meta: {
       title: '登录',
+
     },
   },
   {
