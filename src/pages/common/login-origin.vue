@@ -118,8 +118,7 @@ async function submit() {
               <img src="/logo.svg">
             </span>
             <span class="ant-pro-form-login-title">
-              Antdv Pro
-            </span>
+              Client            </span>
           </div>
           <div class="ant-pro-form-login-desc">
             {{ t("pages.layouts.userLayout.title") }}

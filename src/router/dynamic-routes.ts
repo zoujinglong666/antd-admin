@@ -187,7 +187,7 @@ export default [
     redirect: '/profile/basic',
     meta: {
       title: 'menu.profile',
-      icon: 'profile',
+      icon: 'BarsOutlined',
       locale: 'menu.profile',
     },
     component: basicRouteMap.RouteView,
@@ -199,6 +199,8 @@ export default [
         meta: {
           title: 'menu.profile.basic',
           locale: 'menu.profile.basic',
+          icon: 'profile',
+
         },
       },
     ],
@@ -401,35 +403,35 @@ export default [
     },
     component: basicRouteMap.RouteView,
     children: [
-      // {
-      //   path: '/account/center',
-      //   name: 'AccountCenter',
-      //   component: () => import('~/pages/account/center.vue'),
-      //   meta: {
-      //     title: '个人主页',
-      //     locale: 'menu.account.center',
-      //   },
-      // },
-      // {
-      //   path: '/account/settings',
-      //   name: 'AccountSettings',
-      //   component: () => import('~/pages/account/settings.vue'),
-      //   meta: {
-      //     title: '个人设置',
-      //     locale: 'menu.account.settings',
-      //   },
-      // },
-      // {
-      //   path: '/account/settings/:id',
-      //   name: 'AccountSettings1',
-      //   component: () => import('~/pages/account/settings.vue'),
-      //   meta: {
-      //     title: '个人设置1',
-      //     locale: 'menu.account.settings',
-      //     hideInMenu: true,
-      //     parentKeys: ['/account/settings'],
-      //   },
-      // },
+      {
+        path: '/account/center',
+        name: 'AccountCenter',
+        component: () => import('~/pages/account/center.vue'),
+        meta: {
+          title: '个人主页',
+          locale: 'menu.account.center',
+        },
+      },
+      {
+        path: '/account/settings',
+        name: 'AccountSettings',
+        component: () => import('~/pages/account/settings.vue'),
+        meta: {
+          title: '个人设置',
+          locale: 'menu.account.settings',
+        },
+      },
+      {
+        path: '/account/settings/:id',
+        name: 'AccountSettings1',
+        component: () => import('~/pages/account/settings.vue'),
+        meta: {
+          title: '个人设置1',
+          locale: 'menu.account.settings',
+          hideInMenu: true,
+          parentKeys: ['/account/settings'],
+        },
+      },
     ],
   },
 ] as RouteRecordRaw[]

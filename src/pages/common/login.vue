@@ -7,7 +7,6 @@ const message = useMessage()
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const router = useRouter()
-const userStore = useUserStore()
 const token = useAuthorization()
 const loginModel = reactive({
   username: undefined,
@@ -77,8 +76,7 @@ async function submit() {
               <img w-full h-full object-cover src="/logo.svg">
             </span>
             <span class="ant-pro-form-login-title">
-              Antdv Pro
-            </span>
+              Client            </span>
             <span class="ant-pro-form-login-desc">
               {{ t("pages.layouts.userLayout.title") }}
             </span>
